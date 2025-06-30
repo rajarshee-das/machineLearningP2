@@ -1,0 +1,123 @@
+
+<div style="text-align:center;font-family:Arial,sans-serif;">
+    <h1>Give The Required Information</h1>
+</div>
+
+
+<p>
+    <nav style="background-image:linear-gradient(to right,#00bfff ,#00ffd6); padding:10px 0;">
+        <ul style="list-style:none;display:flex;justify-content:space-between;"">
+            <li style="margin:0 10px"><a href="{% url 'home' %}">Home</a></li>
+            <li style="margin:0 10px"><a href="{% url 'about' %}">About</a></li>
+            <li style="margin:0 10px"><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+    </nav>
+</p>
+
+<p>Predicted Customer Leaving Status ( [0] means no churn / [1] means churn ):{{prediction}}</p>
+
+<form style ="color:rgb(13, 13, 20);background:linear-gradient(to right,#abcb6b,#ffeb3b,#6aef6a);font-size:18px;"action="" method="post">
+    {% csrf_token %}
+
+<label for="info1">Please input information of customerID</label>
+<input type="number" name="info1" id="info1" placeholder=""><br><br>
+<label for="info2">Please input information of gender ( 1 for Male , 0 for Female )</label>
+<input type="number" name="info2" id="info2"><br><br>
+<label for="info3">Please input information of SeniorCitizen ( 0 for yes , 1 for No )</label>
+<input type="number" name="info3" id="info3"><br><br>
+<label for="info4">Please input information of Partner ( 0 for No / 1 for yes )</label>
+<input type="number" name="info4" id="info4"><br><br>
+
+<div style="color:rgb(5, 108, 129)">
+    <label for="info5">Please input information of Dependents ( 0 for No / 1 for Yes )</label>
+    <input type="number" name="info5" id="info5"><br><br>
+    <label for="info6">Please input information of tenure</label>
+    <input type="number" name="info6" id="info6"><br><br>
+    <label for="info7">Please input information of PhoneService ( 0 for No / 1 for Yes )</label>
+    <input type="number" name="info7" id="info7"><br><br>
+    <label for="info8">Please input information of MultipleLines ( 0 for No / 1 for Yes / 2 for No phone service )</label>
+    <input type="number" name="info8" id="info8"><br><br>
+</div>
+
+<div style="color:rgb(17, 4, 101)">
+    <label for="info9">Please input information of InternetService ( 0 for DSL / 1 for Fiber optic / 2 for No )</label>
+    <input type="number" name="info9" id="info9" placeholder=""><br><br>
+    <label for="info10">Please input information of OnlineSecurity ( 0 for No / 2 for Yes / 1 for No intenet service )</label>
+    <input type="number" name="info10" id="info10" placeholder=""><br><br>
+    <label for="info11">Please input information of OnlineBackup ( 0 for No / 2 for Yes / 1 for No intenet service )</label>
+    <input type="number" name="info11" id="info11" placeholder=""><br><br>
+    <label for="info12">Please input information of DeviceProtection ( 0 for No / 2 for Yes / 1 for No intenet service )</label>
+    <input type="number" name="info12" id="info12" placeholder=""><br><br>
+</div>
+
+
+<div style="color:rgb(115, 3, 76)">
+    <label for="info13">Please input information of TechSupport ( 0 for No / 2 for Yes / 1 for No intenet service )</label>
+    <input type="number" name="info13" id="info13" placeholder=""><br><br>
+    <label for="info14">Please input information of StreamingTV ( 0 for No / 2 for Yes / 1 for No intenet service )</label>
+    <input type="number" name="info14" id="info14" placeholder=""><br><br>
+    <label for="info15">Please input information of StreamingMovies ( 0 for No / 2 for Yes / 1 for No intenet service )</label>
+    <input type="number" name="info15" id="info15" placeholder=""><br><br>
+    <label for="info16">Please input information of Contract ( 0 for Month to month / 2 for Two year / 1 for One year )</label>
+    <input type="number" name="info16" id="info16" placeholder=""><br><br>
+</div>
+
+<label for="info17">Please input information of PaperlessBilling ( 0 for No / 1 for yes )</label>
+<input type="number" name="info17" id="info17" placeholder=""><br><br>
+<label for="info18">Please input information of PaymentMethod ( 0 for Bank transfer / 1 for Credit card / 2 for Electronic check / 3 for Mailed check )</label>
+<input type="number" name="info18" id="info18" placeholder=""><br><br>
+<label for="info19">Please input information of MonthlyCharges</label>
+<input type="number" name="info19" id="info19" placeholder=""><br><br>
+<label for="info20">Please input information of TotalCharges </label>
+<input type="number" name="info20" id="info20" placeholder=""><br><br>
+
+
+<button style="background-color:#4CAF50;color:white;padding:10px 20px;border:none;border-radius:5px;"type="submit" onclick="toggle()"id="mybutton">Get the customer leaving status ,
+    0 means customer will not churn
+</button>
+</form>
+
+<script>
+    let toggle = () => {
+        let ele=document.getElementById("mybutton")
+        if(ele.style.backgroundColor=="#4CAF50"){
+            ele.style.backgroundColor="#3630a3";
+        }
+        else{
+            ele.style.backgroundColor="#4CAF50";
+        }
+        }
+</script>
+
+<!-- <label for="">Please input information of Dependents</label>
+<input type="number" id="Dependents"><br>
+<label for="">Please input information of tenure </label>
+<input type="number" id="tenure "><br>
+<label for="">Please input information of PhoneService</label>
+<input type="number" id="PhoneService"><br>
+<label for="">Please input information of MultipleLines</label>
+<input type="number" id="MultipleLines"><br>
+<label for="">Please input information of InternetService</label>
+<input type="number" id="InternetService"><br>
+<label for="">Please input information of OnlineSecurity</label>
+<input type="number" id="OnlineSecurity"><br>
+<label for="">Please input information of OnlineBackup</label>
+<input type="number" id="OnlineBackup"><br>
+<label for="">Please input information of DeviceProtection</label>
+<input type="number" id="DeviceProtection"><br>
+<label for="">Please input information of TechSupport</label>
+<input type="number" id="TechSupport"><br>
+<label for="">Please input information of StreamingTV</label>
+<input type="number" id="StreamingTV"><br>
+<label for="">Please input information of StreamingMovies</label>
+<input type="number" id="StreamingMovies"><br>
+<label for="">Please input information of Contract</label>
+<input type="number" id="Contract"><br>
+<label for="">Please input information of PaperlessBilling</label>
+<input type="number" id="PaperlessBilling"><br>
+<label for="">Please input information of PaymentMethod</label>
+<input type="number" id="PaymentMethod"><br>
+<label for="">Please input information of MonthlyCharges</label>
+<input type="number" id="MonthlyCharges"><br>
+<label for="">Please input information of TotalCharges</label>
+<input type="number" id="TotalCharges"><br> -->
